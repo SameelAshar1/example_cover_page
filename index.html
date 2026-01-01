@@ -14,406 +14,458 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
   />
+  <link rel="stylesheet" href="./style/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-image: url('/images/background.webp');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      margin: 0;
-      color: white;
-    }
-
-    .header-title {
-      color: white;
-      font-size: 1.25rem;
-      margin-left: 15px;
-    }
-
-    .home {
-      text-align: center;
-      padding: 4rem 1rem;
-    }
-
-    .feature {
-      transition: transform 0.3s ease;
-    }
-
-    .feature:hover {
-      transform: translateY(-6px);
-    }
-
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-       
-      margin: 0 auto 1rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .feature-icon i {
-      font-size: 32px;
-      color: white;
-      transition: color 0.3s ease;
-    }
-
-    .feature-title {
-      transition: color 0.3s ease;
-    }
-
-    .feature:hover .feature-icon {
-      background: black;
-    }
-
-    .feature:hover .feature-title {
-      color: #ffffff;
-    }
-
-    .icon-link {
-      color: #adb5bd;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .icon-link:hover {
-      color: white;
-    }
-
-    .pricing-section {
-      padding: 4rem 1rem;
-    }
-
-    .pricing-section .card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pricing-section .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .pricing-section .btn-primary {
-      background-color: white;
-      color: black;
-      border: none;
-    }
-
-    .pricing-section .btn-primary:hover {
-      background-color: #e9ecef;
-    }
-
-    .popup {
-      width: 320px;
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      color: black;
-      padding: 30px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      z-index: 1001;
-      text-align: center;
-    }
-
-    .popup img {
-      width: 90px;
-      margin-top: -60px;
-      border-radius: 50%;
-      background: white;
-      padding: 5px;
-    }
-
-    .page-content.blur {
-      filter: blur(6px);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-    }
-
-    body.show-overlay::after {
-      opacity: 1;
-    }
-
-    .faq-section {
-      padding: 4rem 1rem;
-    }
-    .faq-item {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .faq-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    }
-    .faq-question {
-      cursor: pointer;
-      padding: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .faq-question h5 {
-      margin: 0;
-      color: white;
-    }
-    
-    .faq-icon {
-      font-size: 1.25rem;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-question[aria-expanded="true"] .faq-icon {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      padding: 0 1.25rem 1.25rem;
-      color: #dee2e6
-    }
-    
-    .footer-container {
-      color: white !important;
-    }
-    .footer-container a {
-      color: white !important;
-    }
-    .footer-container p {
-      color: white !important;
-    }
-    
-  </style>
 </head>
 
 <body>
 
-<div id="pageContent" class="page-content">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="/images/logo.jfif" width="32" alt="logo">
+      <span><strong>YES</strong> ENERGY</span>
+    </a>
 
-  <div class="container">
-    <header
-      class="d-flex flex-wrap align-items-center justify-content-center
-             justify-content-md-between py-3 mb-4 border-bottom"
-    >
-      <div class="col-md-3 mb-2 mb-md-0">
-        <a href="/" class="d-inline-flex align-items-center text-decoration-none">
-          <img src="/images/images.webp" alt="Logo" width="40" height="35" />
-          <span class="header-title">Title</span>
-        </a>
-      </div>
-      
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#home" class="nav-link px-2 link-light">Home</a></li>
-        <li><a href="#featured-3" class="nav-link px-2 link-light">Features</a></li>
-        <li><a href="#price" class="nav-link px-2 link-light">Pricing</a></li>
-        <li><a href="#faq" class="nav-link px-2 link-light">FAQs</a></li>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The Power Market OS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Solutions
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#" role="button">
+            Packages
+          </a>
+        </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+        </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+        </li>
       </ul>
 
-      <div class="col-md-3 text-end">
-        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
-        <a href="signup.html" class="btn btn-light">Sign Up</a>
-      </div>
-    </header>
-  </div>
+      <div class="d-flex align-items-center gap-3 nav-actions">
+        <button id="openSearch" class="search-icon"><i class="bi bi-search nav-search"></i></button>
+        <div id="searchOverlay" class="search-overlay">
+          <div class="search-modal">
+            <input type="text" placeholder="Search..." autofocus />
+            <div class="search-actions">
+              <button class="cta-btn">Search</button>
+              <button class="btn-cancel" id="closeSearch">Cancel</button>
+            </div>
+          </div>
+        </div>
 
-  <section class="home" id="home">
-    <h1>Cover your page</h1>
-    <p class="lead">A clean Bootstrap page with working icons & popup.</p>
-    <a class="btn btn-light">Learn more</a>
-  </section>
-
-  <h2 class="text-center ">Features</h2>
-  <div class="container py-5" id="featured-3">
-    <div class="row g-4 row-cols-1 row-cols-lg-3 text-center">
-      <div class="feature col">
-        <div class="feature-icon"><i class="bi bi-collection"></i></div>
-        <h3 class="feature-title">Feature One</h3>
-        <p>Bootstrap icons working correctly.</p>
-      </div>
-
-      <div class="feature col">
-        <div class="feature-icon"><i class="bi bi-camera"></i></div>
-        <h3 class="feature-title">Feature Two</h3>
-        <p>Hover effects included.</p>
-      </div>
-
-      <div class="feature col">
-        <div class="feature-icon"><i class="bi bi-toggles2"></i></div>
-        <h3 class="feature-title">Feature Three</h3>
-        <p>Clean transparent background.</p>
+        <button class="cta-btn">Login</button>
+        <button class="cta-btn">Request a Demo</button>
       </div>
     </div>
   </div>
+</nav>
 
-  <h2 class="text-center ">Pricing</h2>
-  <div class="container pricing-section" id="price">
-    <div class="row row-cols-1 row-cols-md-3 text-center">
+<div class="announcement-bar text-center">
+  The ERCOT RTC+B Program: What to Know and How to Prepare
+  <span>Learn More →</span>
+</div>
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header">Free</div>
-          <div class="card-body">
-            <h1>$0/mo</h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
-            </ul>
-            <a href="signup.html">
-            <button class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-            </a>
-          </div>
-        </div>
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+
+
+      <div class="col-lg-6 hero-content text-white">
+        <p class="text-info fw-semibold" style="margin-top: 200px;">The Power Market OS</p>
+        <h1>
+          Market Intelligence<br>
+          and Decision Support<br>
+          for a Fast-Moving Grid
+        </h1>
+        <p class="hero-text">
+          The only operational foundation that gives power market
+          participants the clarity, speed, and confidence to stay ahead.
+        </p>
+        <button class="cta-btn">Request a Demo</button>
       </div>
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header">Pro</div>
-          <div class="card-body">
-            <h1>$15/mo</h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button class="w-100 btn btn-lg btn-primary">Get started</button>
-          </div>
-        </div>
-      </div>
+      <div class="col-lg-6 hero-image-wrap"></div>
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm ">
-          <div class="card-header">Enterprise</div>
-          <div class="card-body">
-            <h1>$29/mo</h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button id="contactBtn" class="w-100 btn btn-lg btn-primary">
-              Contact us
-            </button>
-          </div>
-        </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3">
+        <h2>1,100+</h2>
+        <p>data sources</p>
+      </div>
+      <div class="col-md-3">
+        <h2>15+</h2>
+        <p>years of normalized data</p>
+      </div>
+      <div class="col-md-3">
+        <h2>1.2B+</h2>
+        <p>daily updates processed</p>
+      </div>
+      <div class="col-md-3">
+        <h2>150M+</h2>
+        <p>rows of new data daily</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 problem-image-wrap">
+        <img src="/images/2.PNG" alt="solar panel image" class="img-fluid">
+      </div>
+      <div class="col-lg-6 problem-content">
+        <h2>
+          Power markets aren't <br>
+          suffering from a data problem. <br>
+          <span class="highlight" style="font-weight: 400 !important;">They're suffering from a clarity problem.</span>
+        </h2>
+
+        <p class="problem-text">
+          Too much raw information. Too little context.
+          Models breaking under new volatility.
+          Decisions forced on tighter timelines.
+        </p>
       </div>
 
     </div>
   </div>
+</section>
 
+
+<section class="grid">
+  <div class="container" style="padding-left:50px ;">
+
+    <p class="grid-title">From Grid Awareness to Confident Action</p>
+    <h1 class="grid-h1">One, Connected Foundation for Modern Power Markets</h1>
+    <p>Yes Energy delivers the industry's only Power Market OS—a single operational foundation that unifies data, intelligence, and execution so your decisions stay a step ahead of the evolving grid and market.</p>
+    <h5>The Power Market OS gives you:</h5>
+
+    <div class="row text-center">
+
+      <div class="col-md-4 mb-4">
+        <div class="grid-card">
+          <div class="grid-icon"><img src="/images/database.PNG" alt="database on cloud"></div>
+          <p><strong>Gold-standard data</strong>, continuously normalized across every ISO</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="grid-card">
+          <div class="grid-icon"><img src="/images/bulb.PNG" alt="intelligence"></div>
+          <p><strong>Structured intelligence</strong> for forecasting, modeling, planning, and situational awareness</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="grid-card">
+          <div class="grid-icon"><img src="/images/search i.PNG" alt="search icon"></div>
+          <p><strong>Real-time visibilty</strong> no one else can match, powered by Live Power's minute-by-minute grid insights</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="grid-card">
+          <div class="grid-icon"><img src="/images/workflow.PNG" alt="workflow"></div>
+          <p><strong>Signal-to-settlement workflows,</strong> connecting decisions to execution in one stream</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="grid-card">
+          <div class="grid-icon"><img src="/images/arrow.PNG" alt="arrow"></div>
+          <p><strong>A directed partnership</strong> with market experts who strengthen your strategy over time</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="power-gallery">
+  <h1>Data and Decision support for every <br> power market participant.</h1>
+  <div class="container">
+    <div class="box box-1">
+      <img src="/images/trading.webp" alt="trading pic">
+      <div class="overlay-text">
+        <strong>For Traders</strong>
+      </div>
+      <div class="hover-text">Learn More About Trading</div>
+    </div>
+    <div class="box box-2">
+      <img src="/images/ipp.jfif" alt="">
+      <div class="overlay-text">
+        <strong>For Ipps</strong>
+      </div>
+      <div class="hover-text">Learn More About Ipps</div>
+    </div>
+    <div class="box box-3">
+      <img src="/images/utilities.webp" alt="utilities pic">
+      <div class="overlay-text">
+        <strong>For Utilities</strong>
+      </div>
+      <div class="hover-text">Learn More About Utilities</div>
+    </div>
+    <div class="box box-4">
+      <img src="/images/assetdev.webp" alt="">
+      <div class="overlay-text">
+        <strong>For Asset Developers</strong>
+      </div>
+      <div class="hover-text">Learn More About Asset Developers</div>
+    </div>
+    <div class="box box-5">
+      <img src="/images/grid.jpg" alt="">
+      <div class="overlay-text">
+        <strong>For Infrastructure Professionals</strong>
+      </div>
+      <div class="hover-text">Learn More About Infrastructure Professionals</div>
+    </div>
+  </div>
+</section>
+
+<section class="six-boxes">
+  <h2>Trusted across the power market. <br>Relied on when every moment matters.</h2>
+  <div class="container">
+    <div class="six-box-grid">
+      <div class="six-box"><img src="/images/rainbow.jfif" alt=""></div>
+      <div class="six-box"><img src="/images/endure.PNG" alt=""></div>
+      <div class="six-box"><img src="/images/ACES.jpg" alt=""></div>
+      <div class="six-box"><img src="/images/oppd.png" alt=""></div>
+      <div class="six-box"><img src="/images/edp.webp" alt=""></div>
+      <div class="six-box"><img src="/images/altop_energy.jfif" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-wrapper">
+  <div class="container">
+    <div class="testimonial-carousel">
+
+      <button class="arrow left" onclick="prevSlide()">‹</button>
+
+      <div class="slides">
+        <div class="slide active">
+          <img src="/images/david.PNG" class="avatar" alt="">
+          <h4>David Starks, Basin Electric</h4>
+          <p>
+            “Yes Energy excels at a lot of things but the biggest and most shining
+            example would be how much they consolidate workflows. I can pull all
+            that data into just one asset suite.”
+          </p>
+        </div>
+
+        <div class="slide">
+          <img src="/images/cody.PNG" class="avatar" alt="">
+          <h4>Cody Schoonover, Real-Time Trader</h4>
+          <p>
+            “The ability to see data in a myriad of different forms within the
+            same platform saves so much time and energy.”
+          </p>
+        </div>
+      </div>
+
+      <button class="arrow right" onclick="nextSlide()">›</button>
+    </div>
+  </div>
+  <div class="container video-grid">
+
+    <div class="video-card" onclick="openVideo('/videos/codyvid.mp4')">
+      <div class="video-thumb">
+        <img src="/images/codycover.PNG" alt="">
+      </div>
+      <h4>Cody Schoonover</h4>
+      <span>Real-Time Trader</span>
+    </div>
+
+    <div class="video-card alt" onclick="openVideo('videos/davidvid.mp4')">
+      <div class="video-thumb">
+        <img src="/images/davidcover.PNG" alt="">
+      </div>
+      <h4>David Starks</h4>
+      <span>Real-Time Trader</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="video-modal" id="videoModal">
+  <span class="close" onclick="closeVideo()">×</span>
+  <video id="modalVideo" controls></video>
 </div>
 
-<div class="popup" id="popup">
-  <img src="/images/contact.webp" />
-  <h2>Contact Us</h2>
-  <ul>
-    <li>Email: contact@example.com</li>
-    <li>Phone: +1 234 567 890</li>
-    <li>Address: 123 Main St, Anytown, USA</li>
-  </ul>
-  <button id="closePopup" class="btn btn-dark mt-3">OK</button>
-</div>
+<section class="content-section">
+  <div class="container">
 
-<section class="container faq-section" id="faq">
-<h2 class="text-center mb-5">Frequently Asked Questions</h2>
+    <div class="card-grid">
 
-<div class="faq-item">
-  <div
-    class="faq-question"
-    data-bs-toggle="collapse"
-    href="#faq1"
-    role="button"
-    aria-expanded="false"
-    >
-    <h5>What is included in the free plan?</h5>
-    <i class="bi bi-chevron-down faq-icon"></i>
-  </div>
-  <div class="collapse faq-answer" id="faq1">
-    The free plan includes 10 users, 2 GB of storage, email support, and access to the help center.
-  </div>
-</div>
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/intelli.jpg" alt="">
+          <span class="date">Nov 17, 2025</span>
+        </div>
+        <div class="card-body">
+          <span class="tag">BLOG</span>
+          <span class="read">6 min read</span>
+          <h3><strong>Artificial Intelligence in Energy Markets: The Case for AI-Ready Data and Human Expertise</strong></h3>
+        </div>
+      </div>
 
-<div class="faq-item">
-  <div
-    class="faq-question"
-    data-bs-toggle="collapse"
-    href="#faq2"
-    role="button"
-    aria-expanded="false"
-    >
-    <h5>Can I upgrade my plan later?</h5>
-    <i class="bi bi-chevron-down faq-icon"></i>
-  </div>
-  <div class="collapse faq-answer" id="faq2">
-    Yes, you can upgrade your plan at any time from the account settings.
-  </div>
-</div>
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/turbine.jpg" alt="">
+          <span class="date">Oct 29, 2025</span>
+        </div>
+        <div class="card-body">
+          <span class="tag">BLOG</span>
+          <span class="read">9 min read</span>
+          <h3><strong>How Do Wind Turbines Work, and Where Are They Located and Coming Online?</strong></h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/grid.jpg" alt="">
+        </div>
+        <div class="card-body">
+          <span class="tag webinar">ON-DEMAND WEBINAR</span>
+          <h3><strong>Feeling the Heat: Exploring Demand Sensitivity to Temperature in Cooler Summer Markets</strong></h3>
+          <p class="author"><strong>Ben Perry | Senior Product Manager</strong></p>
+        </div>
+      </div>
 
-<div class="faq-item">
-  <div
-    class="faq-question"
-    data-bs-toggle="collapse"
-    href="#faq3"
-    role="button"
-    aria-expanded="false"
-    >
-    <h5>How do I contact support?</h5>
-    <i class="bi bi-chevron-down faq-icon"></i>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-text">
+        <h2>The grid moves at the speed of light.</h2>
+        <p>Now your decisions can too.</p>
+      </div>
+      <button class="cta-btn">Request a Demo</button>
+    </div>
+ 
   </div>
-  <div class="collapse faq-answer" id="faq3">
-    You can contact support via email or phone, as listed in the Contact Us section.
-  </div>
+</section>
+<section class="footy" style="background-color: #1c2656;">
+<div class="container" >
+  <footer class="py-5 text-white">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3 text-light">
+        <h5><img src="/images/logo.jfif" alt="Yes Energy Logo" width="32"><Strong>  YES</Strong> ENERGY</h5>  
+        <p>+1 234-567-989</p>
+        <ul class="list-unstyled d-flex link">
+          <li class="ms"><a class="text-white" href="#"><i class="bi bi-linkedin"></i></a></li>
+          <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-youtube"></i></a></li>
+          <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram"></i></a></li>
+        </ul>
+      </div> 
+      <div class="col-6 col-md-2 mb-3 col gx-5">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Power Market OS</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Solutions</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Products</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Resources</a>
+          </li>
+        </ul> 
+      </div> 
+      <div class="col-6 col-md-2 mb-3 col gx-5">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">About</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Careers</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Locations</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Support</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-white">Contact</a>
+          </li>
+        </ul> 
+      </div> 
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form> 
+          <h5>Subscribe to our newsletter</h5> 
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2"> 
+            <label for="newsletter1" class="visually-hidden">Email address</label> 
+            <input id="newsletter1" type="email" class="form-control" placeholder="Email address"> 
+            <button class="cta-btn" type="button">Subscribe</button> 
+          </div> 
+        </form> 
+        <div class="d-flex justify-content-between my-4 text-secondary small">
+          <p>By proceeding, you agree to Yes Energy's Privacy Policy.</p>
+        </div>
+      </div> 
+    </div> 
+    <div class="d-flex justify-content-between py-4 my-4 text-secondary small">
+      <p>&copy; Yes Energy 2022-2025 | Privacy Policy | Some goods and services are protected under common law usage rights and are pending Federal Registration.</p>
+    </div>
+  </footer>
 </div>
 </section>
 
-<div class="footer-container"> 
-  <footer class="py-3 my-4"> 
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3"> 
-      <li class="nav-item"><a href="#home" class="nav-link px-2 text-body-secondary link-light">Home</a>
-      </li> 
-      <li class="nav-item"><a href="#featured-3" class="nav-link px-2 text-body-secondary link-light">Features</a>
-      </li> 
-      <li class="nav-item"><a href="#price" class="nav-link px-2 text-body-secondary link-light">Pricing</a>
-      </li> 
-      <li class="nav-item"><a href="#faq" class="nav-link px-2 text-body-secondary link-light">FAQs</a>
-      </li> 
-    </ul> 
-    <p class="text-center text-body-secondary text-light">© 2025 Company, Inc</p> 
-  </footer> 
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

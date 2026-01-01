@@ -1,32 +1,54 @@
+let current = 0;
+const openBtn = document.getElementById("openSearch");
+const closeBtn = document.getElementById("closeSearch");
+const overlay = document.getElementById("searchOverlay");
+const slides = document.querySelectorAll(".slide");
 
-  const contactBtn = document.getElementById("contactBtn");
-  const popup = document.getElementById("popup");
-  const closePopup = document.getElementById("closePopup");
-  const pageContent = document.getElementById("pageContent");
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
 
-  if (contactBtn) {
-    contactBtn.addEventListener("click", () => {
-      popup.style.display = "block";
-      pageContent.classList.add("blur");
-      document.body.classList.add("show-overlay");
-    });
-  }
-  if (closePopup) {
-    closePopup.addEventListener("click", () => {
-      popup.style.display = "none";
-      pageContent.classList.remove("blur");
-      document.body.classList.remove("show-overlay");
-    });
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    });
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+function openVideo(src) {
+  const modal = document.getElementById("videoModal");
+  const video = document.getElementById("modalVideo");
+
+  video.src = src;
+  modal.style.display = "flex";
+  video.play();
+}
+
+function closeVideo() {
+  const modal = document.getElementById("videoModal");
+  const video = document.getElementById("modalVideo");
+
+  video.pause();
+  video.src = "";
+  modal.style.display = "none";
+}
+
+  openBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
   });
+
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      overlay.classList.remove("active");
+    }
+  });
+
+
