@@ -109,7 +109,7 @@ body {
 /* HERO */
 .hero {
   min-height: 100vh;
-  background: url("../images/herobg.png") no-repeat center / cover;
+  background: url("../images/heroimage.png") center / cover no-repeat;
   display: flex;
   align-items: center;
 }
